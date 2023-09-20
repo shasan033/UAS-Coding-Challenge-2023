@@ -23,4 +23,4 @@ for i in range(len(df) - 2):
     speed.append(distance)
 
 average_speed = sum(speed) / len(speed)
-print(f"Average speed (m/s){average_speed}")
+print(f"Average speed (m/s): {average_speed}")

@@ -17,5 +17,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with client:
         print(f"Connected to {addr}")
         while True:
-            print("Sending GPS coordinates")
             client.sendall(gps_coordinates.encode("utf-8"))

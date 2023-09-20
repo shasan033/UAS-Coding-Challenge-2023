@@ -10,12 +10,10 @@ PORT = 9090
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 clientSocket.connect((HOST, PORT))
 gps_coordinates = clientSocket.recv(4096).decode()
-print(gps_coordinates)
-
 
 # Take server data and parse it
 df = pd.DataFrame([map(float, x.split("\t")) for x in gps_coordinates.split("\n")])
-print(df)
+print(f"Parsed information from server: \n{df}")
 
 speed = []
 for i in range(len(df) - 2):
@@ -24,5 +22,5 @@ for i in range(len(df) - 2):
     distance = hs.haversine(loc1, loc2, unit=Unit.METERS)
     speed.append(distance)
 
-print(speed)
-print(sum(speed) / len(speed))
+average_speed = sum(speed) / len(speed)
+print(f"Average speed (m/s){average_speed}")
